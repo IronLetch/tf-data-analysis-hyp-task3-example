@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 
+import statsmodels.stats.weightstats as w
 
 chat_id = 531503618 # Ваш chat ID, не меняйте название переменной
 

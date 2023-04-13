@@ -5,8 +5,14 @@ import statsmodels.stats.weightstats as w
 
 chat_id = 531503618 # Ваш chat ID, не меняйте название переменной
 
-def solution(x: np.array, y: np.array) -> bool:  # Одна или две выборке на входе, заполняется исходя из условия
+def solution(x_success: int, x_cnt: int, y_success: int, y_cnt: int) -> bool:
 
-    _, pvalue = w.ttest_ind(x, y, alternative='larger')
+    alpha = 0.04
 
-    return pvalue <= 0.04
+    _, p_value = proportions_ztest(
+
+        [x_success, y_success], [x_cnt, y_cnt], alternative="smaller"
+
+    )
+
+    return p_value <= alpha
